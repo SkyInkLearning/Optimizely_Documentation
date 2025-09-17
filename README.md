@@ -18,7 +18,7 @@ Connection strings for your own database in Microsoft SQL Server Management Stud
   },
   "AllowedHosts": "*",
   "ConnectionStrings": {
-    "EPiServerDB": "Data Source=Sky;Initial Catalog=Optimi-001;Integrated Security=true;Connect Timeout=60;Persist Security Info=False;MultipleActiveResultSets=True;TrustServerCertificate=true;"
+    "EPiServerDB": "Data Source=SERVERNAME;Initial Catalog=DATABASENAME;Integrated Security=true;Connect Timeout=60;Persist Security Info=False;MultipleActiveResultSets=True;TrustServerCertificate=true;"
   }
 }
 ```
