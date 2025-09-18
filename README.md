@@ -12,6 +12,7 @@ Open console and type:
 dotnet new install EPiServer.Templates
 ```
 
+After having installed the package, create a new project and make sure the optimizely package is in the nuget source.
 
 ## Licence:
 
@@ -19,27 +20,22 @@ Request a licence from this url:
 
 https://license.optimizely.com/
 
-Download it from the email and add it to the solutions root folder. Should show up in the Setting > Licence Information if done correctly.
+Download it from the email and add it to the solutions root folder. Should show up in the Setting > Licence Information in the optimizely backoffice if done correctly.
 
-## AppSettings.Json file:
+## Database and appsettings.json file:
 
-Connection strings for your own database in Microsoft SQL Server Management Studio.
+Create a database in Microsoft SQL Server Management Studio.
+
+Connection string for your own database in Microsoft SQL Server Management Studio. Switch out the servername and databasename.
 
 ```json
 {
-  "Logging": {
-    "LogLevel": {
-      "Default": "Warning",
-      "Microsoft": "Warning",
-      "EPiServer": "Warning",
-      "Microsoft.Hosting.Lifetime": "Information"
-    }
-  },
   "AllowedHosts": "*",
   "ConnectionStrings": {
     "EPiServerDB": "Data Source=SERVERNAME;Initial Catalog=DATABASENAME;Integrated Security=true;Connect Timeout=60;Persist Security Info=False;MultipleActiveResultSets=True;TrustServerCertificate=true;"
   }
 }
 ```
+
 
 
