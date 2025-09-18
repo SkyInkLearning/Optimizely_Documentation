@@ -22,6 +22,8 @@ https://license.optimizely.com/
 
 Download it from the email and add it to the solutions root folder. Should show up in the Setting > Licence Information in the optimizely backoffice if done correctly.
 
+To reach the backoffice go to https://localhost:5000/episerver/cms 
+
 ## Database and appsettings.json file:
 
 Create a database in Microsoft SQL Server Management Studio.
