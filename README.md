@@ -33,7 +33,7 @@ Connection string for your own database in Microsoft SQL Server Management Studi
 
 Request a licence from this url: https://license.optimizely.com/
 
-The mac adress can be found under network settings on your computer. 
+The mac adress can be found under network settings on your computer or you can type "ipconfig /all" in the command console.
 
 After sending the request, you will recieve an email. Download the file and add it to the solutions root folder. Should show up in the Setting > Licence Information in the optimizely backoffice if done correctly.
 
