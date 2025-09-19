@@ -53,17 +53,83 @@ Install-Package Serilog.Formatting.Compact
 Install-Package Serilog.Sinks.File
 ```
 
+Add the following to the program file:
 
+```csharp
+using Serilog;
 
+namespace Optimizely002;
 
+public class Program
+{
+    public static IConfiguration Configuration { get; } =
+        new ConfigurationBuilder()
+        .AddJsonFile("appSettings.json", false, true)
+        .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", true, true)
+        .AddJsonFile($"appsettings.{Environment.MachineName}.json", true, true)
+        .AddEnvironmentVariables()
+        .Build();
 
+    public static void Main(string[] args)
+    {
+        Log.Logger = new LoggerConfiguration()
+            .ReadFrom.Configuration(Configuration).WriteTo.Console().CreateLogger();
 
+        CreateHostBuilder(args).Build().Run();
+    }
 
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureCmsDefaults()
+            .UseSerilog()   
+            .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
+}
 
+```
 
+Add in the appsetting:
 
-
-
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning",
+      "Microsoft": "Warning",
+      "EPiServer": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "Serilog": {
+    "Using": [],
+    "MinimumLevel": {
+      "Default": "Warning",
+      "Override": {
+        "Microsoft": "Warning",
+        "System": "Warning"
+      }
+    },
+    "Enrich": [ "FromLogContext", "WithMachineName", "WithProcessId", "WithThreadId" ],
+    "WriteTo": [
+      { "Name": "Console" },
+      {
+        "Name": "File",
+        "Args": {
+          "path": "Logs/log.txt",
+          "rollingInterval": "Day",
+          "outputTemplate": "{Timestamp:G} {Message}{NewLine:1}{Exception:1}"
+        }
+      },
+      {
+        "Name": "File",
+        "Args": {
+          "path": "Logs/log.json",
+          "rollingInterval": "Day",
+          "formatter": "Serilog.Formatting.Json.JsonFormatter, Serilog"
+        }
+      }
+    ]
+  }
+```
 
 
 
