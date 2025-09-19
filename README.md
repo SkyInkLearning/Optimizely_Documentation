@@ -110,15 +110,6 @@ Add in the appsetting:
     },
     "Enrich": [ "FromLogContext", "WithMachineName", "WithProcessId", "WithThreadId" ],
     "WriteTo": [
-      { "Name": "Console" },
-      {
-        "Name": "File",
-        "Args": {
-          "path": "Logs/log.txt",
-          "rollingInterval": "Day",
-          "outputTemplate": "{Timestamp:G} {Message}{NewLine:1}{Exception:1}"
-        }
-      },
       {
         "Name": "File",
         "Args": {
