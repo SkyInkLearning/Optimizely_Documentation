@@ -131,7 +131,7 @@ This is to lock down so that only certain types of pages can be created under th
 ```csharp
 [InitializableModule]
 [ModuleDependency(typeof(CmsCoreInitialization))]
-public class RootPageInitialization
+public class RootPageInitialization : IInitializableModule
 {
     public void Initialize(InitializationEngine context)
     {
@@ -158,11 +158,6 @@ You create a wwwroot file. (Should have the globe next to it after creation)
 Add images into folders. And then add the indicated line below:
 
 ```csharp
-using Optimizely002.Business;
-using System.ComponentModel.DataAnnotations;
-
-namespace Optimizely002.Models.Pages;
-
 [ContentType(
     GUID = "623CEBCD-6DD4-47F2-B454-1C7E578AF466",
     GroupName = Globals.GroupNames.Specialized
