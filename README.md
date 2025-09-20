@@ -151,5 +151,42 @@ public class RootPageInitialization
 }
 ```
 
+## Adding icons to pages/blocks:
+
+You create a wwwroot file. (Should have the globe next to it after creation)
+
+Add images into folders. And then add the indicated line below:
+
+```csharp
+using Optimizely002.Business;
+using System.ComponentModel.DataAnnotations;
+
+namespace Optimizely002.Models.Pages;
+
+[ContentType(
+    GUID = "623CEBCD-6DD4-47F2-B454-1C7E578AF466",
+    GroupName = Globals.GroupNames.Specialized
+    )]
+
+[ImageUrl("/pages/CMS-icon-page-02.png")]    <===== This line.
+public class StartPage : SitePageData
+{
+    [Display(
+        GroupName = SystemTabNames.Content,
+        Order = 10
+        )]
+    [CultureSpecific]
+    
+    public virtual string Heading { get; set; } = string.Empty;
+}
+```
+
+And it should look like this after:
+
+<img src="https://github.com/user-attachments/assets/72f5d374-98de-42ff-877e-1168bd3f61d4" width="400">
+
+
+
+
 
 
