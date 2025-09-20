@@ -181,6 +181,17 @@ And it should look like this after:
 <img src="https://github.com/user-attachments/assets/72f5d374-98de-42ff-877e-1168bd3f61d4" width="400">
 
 
+## Allowing image upload for pages:
+
+In the models folder, create a class named ImageFile
+
+```csharp
+[ContentType(GUID = "7C62645B-4170-4415-A45A-2440FED397B4")]
+[MediaDescriptor(ExtensionString = "jpg,jpeg,jpe,ico,gif,bmp,png,webp")]
+public class ImageFile : ImageData
+{
+}
+```
 
 
 
