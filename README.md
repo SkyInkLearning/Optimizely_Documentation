@@ -124,6 +124,32 @@ Add in the appsetting:
 
 
 
+## Limiting page creation under root:
+
+This is to lock down so that only certain types of pages can be created under the root.
+
+```csharp
+[InitializableModule]
+[ModuleDependency(typeof(CmsCoreInitialization))]
+public class RootPageInitialization
+{
+    public void Initialize(InitializationEngine context)
+    {
+        var contentTypeRepository = context.Locate.Advanced.GetInstance<IContentTypeRepository>();
+        var sysRoot = contentTypeRepository.Load("SysRoot") as PageType;
+        var setting = new AvailableSetting { Availability = Availability.Specific };
+
+        setting.AllowedContentTypeNames.Add(contentTypeRepository.Load<StartPage>().Name);
+
+        var avaliableSettingsRepository = context.Locate.Advanced.GetInstance<IAvailableSettingsRepository>();
+        avaliableSettingsRepository.RegisterSetting(sysRoot, setting);
+    }
+
+    public void Uninitialize(InitializationEngine context)
+    {
+    }
+}
+```
 
 
 
