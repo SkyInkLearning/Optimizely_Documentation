@@ -183,7 +183,7 @@ And it should look like this after:
 
 ## Allowing image upload for pages:
 
-In the models folder, create a class named ImageFile
+In the models folder, create a class named ImageFile and add the following code:
 
 ```csharp
 [ContentType(GUID = "7C62645B-4170-4415-A45A-2440FED397B4")]
@@ -192,6 +192,9 @@ public class ImageFile : ImageData
 {
 }
 ```
+
+
+
 
 
 
