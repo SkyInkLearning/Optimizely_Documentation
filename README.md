@@ -206,9 +206,50 @@ To make "ÅÄÖ" show up in your html SEO and so on, add html.raw like below:
 ### Translations xml:
 
 ```xml
-
-
-
+<?xml version="1.0" encoding="utf-8"?>
+<languages>
+	<language name="English" id="en">
+		<contenttypes>
+			<icontentdata>
+				<properties>
+					<metadescription>
+						<caption>Meta description</caption>
+						<help>Add a meta description</help>
+					</metadescription>
+				</properties>
+			</icontentdata>
+			<startpage>
+				<properties>
+					<heading>
+						<caption>Heading</caption>
+						<help>Add a heading</help>
+					</heading>
+				</properties>
+			</startpage>
+		</contenttypes>
+	</language>
+	
+	<language name="Svenska" id="sv">
+		<contenttypes>
+			<icontentdata>
+				<properties>
+					<metadescription>
+						<caption>Metadescription</caption>
+						<help>Lägg till en metadescription</help>
+					</metadescription>
+				</properties>
+			</icontentdata>
+			<startpage>
+				<properties>
+					<heading>
+						<caption>Rubrik</caption>
+						<help>Lägg till en rubrik</help>
+					</heading>
+				</properties>
+			</startpage>
+		</contenttypes>
+	</language>
+</languages>
 ```
 
 ## PropertyFor:
