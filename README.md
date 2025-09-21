@@ -302,6 +302,7 @@ public class StartPage : SitePageData
 ## Hiding from editor:
 
 If you want to hide something from the editor for whatever reason, you add the ScaffoldColumn(false) line from below:
+
 ```csharp
 [Display(
     GroupName = SystemTabNames.Content,
@@ -311,3 +312,63 @@ If you want to hide something from the editor for whatever reason, you add the S
 [ScaffoldColumn(false)]    <===== This line.
 public virtual XhtmlString MainBody { get; set; }
 ```
+
+## Moving category to the gray area:
+
+Create another initialization class named MetaDataInitialization:
+
+```csharp
+[InitializableModule]
+[ModuleDependency(typeof(CmsCoreInitialization))]
+public class MetaDataInitialization : IInitializableModule
+{
+    public void Initialize(InitializationEngine context)
+    {
+        if (context.HostType == HostType.WebApplication) 
+        { 
+            var registry = context.Locate.Advanced.GetInstance<MetadataHandlerRegistry>();
+            registry.RegisterMetadataHandler(typeof(ContentData), new MetaDataExtender());
+        }
+    }
+
+    public void Uninitialize(InitializationEngine context)
+    {
+    }
+}
+```
+
+Create folder Extenders and a class named MetaDataExtender
+
+```csharp
+public class MetaDataExtender : IMetadataExtender
+{
+    public void ModifyMetadata(ExtendedMetadata metadata, IEnumerable<Attribute> attributes)
+    {
+        foreach (var property in metadata.Properties) 
+        {
+            if (property.PropertyName == "icategorizable_category")
+            {
+                property.GroupName = "EPiServerCMS_SettingsPanel";
+                property.Order = 1;
+            }
+        }
+    }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
