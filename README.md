@@ -209,3 +209,41 @@ If you want to allow editing of areas in the backoffice of the site, then add th
 <h1>@Html.PropertyFor(x => x.CurrentPage.Heading)</h1>
 ```
 
+
+## Properties:
+
+A couple of different properties that can be added textareas, image, strings and so on:
+
+```csharp
+public class StartPage : SitePageData
+{
+    [Display(
+        GroupName = SystemTabNames.Content,
+        Order = 10
+        )]
+    [CultureSpecific]
+    public virtual string Heading { get; set; } = string.Empty;
+
+    [Display(
+        GroupName = SystemTabNames.Content,
+        Order = 20
+        )]
+    [CultureSpecific]
+    [UIHint(UIHint.Textarea)]
+    public virtual string Preamble { get; set; } = string.Empty;
+
+    [Display(
+        GroupName = SystemTabNames.Content,
+        Order = 30
+        )]
+    [CultureSpecific]
+    public virtual XhtmlString MainBody { get; set; }
+
+    [Display(
+        GroupName = SystemTabNames.Content,
+        Order = 40
+        )]
+    [UIHint(UIHint.Image)]
+    public virtual ContentReference Image { get; set; }
+}
+```
