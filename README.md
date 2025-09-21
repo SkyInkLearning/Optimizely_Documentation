@@ -193,8 +193,13 @@ public class ImageFile : ImageData
 }
 ```
 
+## Languages:
 
+To make "ÅÄÖ" show up in your html SEO and so on, add html.raw like below:
 
+```cshtml
+<h1>@Html.Raw(@Model.CurrentPage.Preamble)</h1>
+```
 
 
 
