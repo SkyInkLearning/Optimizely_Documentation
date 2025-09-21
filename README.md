@@ -195,7 +195,7 @@ public class ImageFile : ImageData
 
 ## Languages:
 
-### Html.Raw
+### Html.Raw:
 
 To make "ÅÄÖ" show up in your html SEO and so on, add html.raw like below:
 
