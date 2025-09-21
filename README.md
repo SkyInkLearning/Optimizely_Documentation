@@ -247,3 +247,16 @@ public class StartPage : SitePageData
     public virtual ContentReference Image { get; set; }
 }
 ```
+
+## Hiding from editor:
+
+If you want to hide something from the editor for whatever reason, you add the ScaffoldColumn(false) line from below:
+```csharp
+[Display(
+    GroupName = SystemTabNames.Content,
+    Order = 30
+    )]
+[CultureSpecific]
+[ScaffoldColumn(false)]    <===== This line.
+public virtual XhtmlString MainBody { get; set; }
+```
