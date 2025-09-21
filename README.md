@@ -201,6 +201,11 @@ To make "ÅÄÖ" show up in your html SEO and so on, add html.raw like below:
 <h1>@Html.Raw(@Model.CurrentPage.Preamble)</h1>
 ```
 
+## PropertyFor:
 
+If you want to allow editing of areas in the backoffice of the site, then add the PropertyFor like below:
 
+```cshtml
+<h1>@Html.PropertyFor(x => x.CurrentPage.Heading)</h1>
+```
 
