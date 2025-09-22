@@ -372,6 +372,7 @@ public class StartPage : SitePageData
 {
 }
 ```
+<img src="https://github.com/user-attachments/assets/bb6ede95-d2f9-4a4f-ab34-a31405d88791" width="400">
 
 
 
