@@ -153,6 +153,8 @@ public class RootPageInitialization : IInitializableModule
 
 ## Adding icons to pages/blocks:
 
+https://www.markeverard.com/2014/11/17/content-icons-for-episerver/
+
 You create a wwwroot file. (Should have the globe next to it after creation)
 
 Add images into folders. And then add the indicated line below:
