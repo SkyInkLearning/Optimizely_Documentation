@@ -356,12 +356,20 @@ public class MetaDataExtender : IMetadataExtender
 }
 ```
 
+## Limiting page creation for startpage:
 
-
-
-
-
-
+```csharp
+[AvailableContentTypes(Availability.Specific, 
+    Include = new[]
+    {
+        typeof(ArticlePage),
+        typeof(SettingsPage)
+    }
+)]
+public class StartPage : SitePageData
+{
+}
+```
 
 
 
