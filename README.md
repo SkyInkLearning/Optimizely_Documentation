@@ -380,7 +380,17 @@ public class StartPage : SitePageData
 
 If you´re in a group, you might need want more than one profile for starting the project in dev mode as each person might have a different database attached to the project.
 
-Start by going to the solution folder, copy the appsettings.Development.json file and switch out "Development" to a name of your choosing. Once created, re-open VS and remove everything inside of it.
+Start by going to the solution folder, copy the appsettings.Development.json file and switch out "Development" to a name of your choosing. Once created, re-open VS and remove everything inside of it and add the connectionstring to it.
+
+```json
+{
+  "ConnectionStrings": {
+    "EPiServerDB": "Data Source={NAME};Initial Catalog={NAME};Integrated Security=true;Connect Timeout=60;Persist Security Info=False;MultipleActiveResultSets=True;TrustServerCertificate=true;"
+  }
+}
+```
+
+Remove the connectionstring from the appsettings.json file completely.
 
 Then you go to launchsettings.json and add the following under profiles:
 
@@ -390,11 +400,23 @@ Then you go to launchsettings.json and add the following under profiles:
   "launchBrowser": true,
   "applicationUrl": "https://localhost:5000/",
   "environmentVariables": {
-    "ASPNETCORE_ENVIRONMENT": "Development"
+    "ASPNETCORE_ENVIRONMENT": "Simon"
   }
 }
 ```
 
+In the program file change to:
+
+```csharp
+public static IConfiguration Configuration { get; } =
+	new ConfigurationBuilder()
+	.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+	.AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", optional: true, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{Environment.UserName}.json", optional: true, reloadOnChange: true)
+	.AddJsonFile($"appsettings.{Environment.MachineName}.json", optional: true, reloadOnChange: true)
+	.AddEnvironmentVariables()
+	.Build();
+```
 
 
 
