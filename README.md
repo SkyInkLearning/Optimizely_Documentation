@@ -376,9 +376,24 @@ public class StartPage : SitePageData
 
 
 
+## Adding more profiles:
 
+If you´re in a group, you might need want more than one profile for starting the project in dev mode as each person might have a different database attached to the project.
 
+Start by going to the solution folder, copy the appsettings.Development.json file and switch out "Development" to a name of your choosing. Once created, re-open VS and remove everything inside of it.
 
+Then you go to launchsettings.json and add the following under profiles:
+
+```json
+"Simon": {
+  "commandName": "Project",
+  "launchBrowser": true,
+  "applicationUrl": "https://localhost:5000/",
+  "environmentVariables": {
+    "ASPNETCORE_ENVIRONMENT": "Development"
+  }
+}
+```
 
 
 
